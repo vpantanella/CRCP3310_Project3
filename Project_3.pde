@@ -30,7 +30,10 @@ void loadData() {
     HashMap<String, Float> weatherHashMap = new HashMap<String, Float>();
     String urlPart1 = "http://api.openweathermap.org/data/2.5/weather?zip=";
     int urlZip = (int)random(10001, 99999);
-    String urlPart2 = ",us&appid=44db6a862fba0b067b1930da0d769e98";
+    String urlPart2 = ",us&appid=b1b15e88fa797225412429c1c50c122a";
+    // String urlPart1 = "http://api.openweathermap.org/data/2.5/weather?zip=";
+    //int urlZip = (int)random(10001, 99999);
+    //String urlPart2 = ",us&appid=44db6a862fba0b067b1930da0d769e98";
     String urlFinal = urlPart1 + urlZip +urlPart2;
     try {
       document = loadJSONObject(urlFinal);
@@ -104,15 +107,15 @@ void dataDisplay(int dataNum) {
   float tempValue = weatherHashMap.get(TEMP_KEY);
   float fahrenheitTemp = ((tempValue)*(9.0/5.0)- 459.67);
   float tempColor = map(fahrenheitTemp, 0, 100, 0, 255);
-  fill(tempColor, (tempColor/ 2.0), (255 - tempColor)); 
+  fill(tempColor, (tempColor/ 9.0), (255 - tempColor)); 
 
 
   float windValue = weatherHashMap.get(SPEED_KEY);
   float degreeValue = weatherHashMap.get(DEG_KEY);
 
-  text(fahrenheitTemp, xPos, yPos);
+  text(fahrenheitTemp, xPos+5, yPos+10);
   noStroke(); 
-  ellipse(xPos, yPos, 10, 10);
+  ellipse(xPos, yPos, 12, 12);
   stroke(0);
   strokeWeight(2);
   pushMatrix();
